@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -21,8 +21,8 @@ pub struct UpdateVerificationFlowWithLinkMethod {
     #[serde(rename = "email")]
     pub email: String,
     /// Method is the method that should be used for this verification flow  Allowed values are `link` and `code` link VerificationStrategyLink code VerificationStrategyCode
-    #[serde(rename = "method")]
-    pub method: MethodEnum,
+    // #[serde(rename = "method")]
+    // pub method: MethodEnum,
     /// Transient data to pass along to any webhooks
     #[serde(rename = "transient_payload", skip_serializing_if = "Option::is_none")]
     pub transient_payload: Option<serde_json::Value>,
@@ -30,11 +30,14 @@ pub struct UpdateVerificationFlowWithLinkMethod {
 
 impl UpdateVerificationFlowWithLinkMethod {
     /// Update Verification Flow with Link Method
-    pub fn new(email: String, method: MethodEnum) -> UpdateVerificationFlowWithLinkMethod {
+    pub fn new(
+        email: String,
+        // method: MethodEnum
+    ) -> UpdateVerificationFlowWithLinkMethod {
         UpdateVerificationFlowWithLinkMethod {
             csrf_token: None,
             email,
-            method,
+            // method,
             transient_payload: None,
         }
     }
@@ -53,4 +56,3 @@ impl Default for MethodEnum {
         Self::Link
     }
 }
-

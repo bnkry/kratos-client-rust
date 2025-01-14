@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -21,8 +21,8 @@ pub struct UpdateRegistrationFlowWithCodeMethod {
     #[serde(rename = "csrf_token", skip_serializing_if = "Option::is_none")]
     pub csrf_token: Option<String>,
     /// Method to use  This field must be set to `code` when using the code method.
-    #[serde(rename = "method")]
-    pub method: String,
+    // #[serde(rename = "method")]
+    // pub method: String,
     /// Resend restarts the flow with a new code
     #[serde(rename = "resend", skip_serializing_if = "Option::is_none")]
     pub resend: Option<String>,
@@ -36,15 +36,17 @@ pub struct UpdateRegistrationFlowWithCodeMethod {
 
 impl UpdateRegistrationFlowWithCodeMethod {
     /// Update Registration Flow with Code Method
-    pub fn new(method: String, traits: serde_json::Value) -> UpdateRegistrationFlowWithCodeMethod {
+    pub fn new(
+        // method: String,
+        traits: serde_json::Value,
+    ) -> UpdateRegistrationFlowWithCodeMethod {
         UpdateRegistrationFlowWithCodeMethod {
             code: None,
             csrf_token: None,
-            method,
+            // method,
             resend: None,
             traits,
             transient_payload: None,
         }
     }
 }
-

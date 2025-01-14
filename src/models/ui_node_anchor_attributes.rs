@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -20,18 +20,23 @@ pub struct UiNodeAnchorAttributes {
     #[serde(rename = "id")]
     pub id: String,
     /// NodeType represents this node's types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"a\". text Text input Input img Image a Anchor script Script
-    #[serde(rename = "node_type")]
-    pub node_type: NodeTypeEnum,
+    // #[serde(rename = "node_type")]
+    // pub node_type: NodeTypeEnum,
     #[serde(rename = "title")]
     pub title: Box<models::UiText>,
 }
 
 impl UiNodeAnchorAttributes {
-    pub fn new(href: String, id: String, node_type: NodeTypeEnum, title: models::UiText) -> UiNodeAnchorAttributes {
+    pub fn new(
+        href: String,
+        id: String,
+        // node_type: NodeTypeEnum,
+        title: models::UiText,
+    ) -> UiNodeAnchorAttributes {
         UiNodeAnchorAttributes {
             href,
             id,
-            node_type,
+            // node_type,
             title: Box::new(title),
         }
     }
@@ -56,4 +61,3 @@ impl Default for NodeTypeEnum {
         Self::Text
     }
 }
-

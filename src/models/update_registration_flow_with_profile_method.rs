@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -18,8 +18,8 @@ pub struct UpdateRegistrationFlowWithProfileMethod {
     #[serde(rename = "csrf_token", skip_serializing_if = "Option::is_none")]
     pub csrf_token: Option<String>,
     /// Method  Should be set to profile when trying to update a profile.
-    #[serde(rename = "method")]
-    pub method: String,
+    // #[serde(rename = "method")]
+    // pub method: String,
     /// Screen requests navigation to a previous screen.  This must be set to credential-selection to go back to the credential selection screen.
     #[serde(rename = "screen", skip_serializing_if = "Option::is_none")]
     pub screen: Option<String>,
@@ -33,14 +33,16 @@ pub struct UpdateRegistrationFlowWithProfileMethod {
 
 impl UpdateRegistrationFlowWithProfileMethod {
     /// Update Registration Flow with Profile Method
-    pub fn new(method: String, traits: serde_json::Value) -> UpdateRegistrationFlowWithProfileMethod {
+    pub fn new(
+        // method: String,
+        traits: serde_json::Value,
+    ) -> UpdateRegistrationFlowWithProfileMethod {
         UpdateRegistrationFlowWithProfileMethod {
             csrf_token: None,
-            method,
+            // method,
             screen: None,
             traits,
             transient_payload: None,
         }
     }
 }
-

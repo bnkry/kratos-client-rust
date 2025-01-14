@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -18,8 +18,8 @@ pub struct UpdateRegistrationFlowWithWebAuthnMethod {
     #[serde(rename = "csrf_token", skip_serializing_if = "Option::is_none")]
     pub csrf_token: Option<String>,
     /// Method  Should be set to \"webauthn\" when trying to add, update, or remove a webAuthn pairing.
-    #[serde(rename = "method")]
-    pub method: String,
+    // #[serde(rename = "method")]
+    // pub method: String,
     /// The identity's traits
     #[serde(rename = "traits")]
     pub traits: serde_json::Value,
@@ -30,16 +30,22 @@ pub struct UpdateRegistrationFlowWithWebAuthnMethod {
     #[serde(rename = "webauthn_register", skip_serializing_if = "Option::is_none")]
     pub webauthn_register: Option<String>,
     /// Name of the WebAuthn Security Key to be Added  A human-readable name for the security key which will be added.
-    #[serde(rename = "webauthn_register_displayname", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "webauthn_register_displayname",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub webauthn_register_displayname: Option<String>,
 }
 
 impl UpdateRegistrationFlowWithWebAuthnMethod {
     /// Update Registration Flow with WebAuthn Method
-    pub fn new(method: String, traits: serde_json::Value) -> UpdateRegistrationFlowWithWebAuthnMethod {
+    pub fn new(
+        // method: String,
+        traits: serde_json::Value,
+    ) -> UpdateRegistrationFlowWithWebAuthnMethod {
         UpdateRegistrationFlowWithWebAuthnMethod {
             csrf_token: None,
-            method,
+            // method,
             traits,
             transient_payload: None,
             webauthn_register: None,
@@ -47,4 +53,3 @@ impl UpdateRegistrationFlowWithWebAuthnMethod {
         }
     }
 }
-

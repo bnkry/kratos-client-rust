@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -26,8 +26,8 @@ pub struct UiNodeInputAttributes {
     #[serde(rename = "name")]
     pub name: String,
     /// NodeType represents this node's types. It is a mirror of `node.type` and is primarily used to allow compatibility with OpenAPI 3.0.  In this struct it technically always is \"input\". text Text input Input img Image a Anchor script Script
-    #[serde(rename = "node_type")]
-    pub node_type: NodeTypeEnum,
+    // #[serde(rename = "node_type")]
+    // pub node_type: NodeTypeEnum,
     /// OnClick may contain javascript which should be executed on click. This is primarily used for WebAuthn.
     #[serde(rename = "onclick", skip_serializing_if = "Option::is_none")]
     pub onclick: Option<String>,
@@ -44,19 +44,29 @@ pub struct UiNodeInputAttributes {
     #[serde(rename = "type")]
     pub r#type: TypeEnum,
     /// The input's value.
-    #[serde(rename = "value", default, with = "::serde_with::rust::double_option", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "value",
+        default,
+        with = "::serde_with::rust::double_option",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub value: Option<Option<serde_json::Value>>,
 }
 
 impl UiNodeInputAttributes {
     /// InputAttributes represents the attributes of an input node
-    pub fn new(disabled: bool, name: String, node_type: NodeTypeEnum, r#type: TypeEnum) -> UiNodeInputAttributes {
+    pub fn new(
+        disabled: bool,
+        name: String,
+        // node_type: NodeTypeEnum,
+        r#type: TypeEnum,
+    ) -> UiNodeInputAttributes {
         UiNodeInputAttributes {
             autocomplete: None,
             disabled,
             label: None,
             name,
-            node_type,
+            // node_type,
             onclick: None,
             onload: None,
             pattern: None,
@@ -142,4 +152,3 @@ impl Default for TypeEnum {
         Self::Text
     }
 }
-

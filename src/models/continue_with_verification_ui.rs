@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -15,17 +15,20 @@ use serde::{Deserialize, Serialize};
 #[derive(Clone, Default, Debug, PartialEq, Serialize, Deserialize)]
 pub struct ContinueWithVerificationUi {
     /// Action will always be `show_verification_ui` show_verification_ui ContinueWithActionShowVerificationUIString
-    #[serde(rename = "action")]
-    pub action: ActionEnum,
+    // #[serde(rename = "action")]
+    // pub action: ActionEnum,
     #[serde(rename = "flow")]
     pub flow: Box<models::ContinueWithVerificationUiFlow>,
 }
 
 impl ContinueWithVerificationUi {
     /// Indicates, that the UI flow could be continued by showing a verification ui
-    pub fn new(action: ActionEnum, flow: models::ContinueWithVerificationUiFlow) -> ContinueWithVerificationUi {
+    pub fn new(
+        // action: ActionEnum,
+        flow: models::ContinueWithVerificationUiFlow,
+    ) -> ContinueWithVerificationUi {
         ContinueWithVerificationUi {
-            action,
+            // action,
             flow: Box::new(flow),
         }
     }
@@ -42,4 +45,3 @@ impl Default for ActionEnum {
         Self::ShowVerificationUi
     }
 }
-

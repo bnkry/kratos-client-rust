@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -24,8 +24,8 @@ pub struct UpdateRecoveryFlowWithCodeMethod {
     #[serde(rename = "email", skip_serializing_if = "Option::is_none")]
     pub email: Option<String>,
     /// Method is the method that should be used for this recovery flow  Allowed values are `link` and `code`. link RecoveryStrategyLink code RecoveryStrategyCode
-    #[serde(rename = "method")]
-    pub method: MethodEnum,
+    // #[serde(rename = "method")]
+    // pub method: MethodEnum,
     /// Transient data to pass along to any webhooks
     #[serde(rename = "transient_payload", skip_serializing_if = "Option::is_none")]
     pub transient_payload: Option<serde_json::Value>,
@@ -33,12 +33,13 @@ pub struct UpdateRecoveryFlowWithCodeMethod {
 
 impl UpdateRecoveryFlowWithCodeMethod {
     /// Update Recovery Flow with Code Method
-    pub fn new(method: MethodEnum) -> UpdateRecoveryFlowWithCodeMethod {
+    pub fn new(// method: MethodEnum
+    ) -> UpdateRecoveryFlowWithCodeMethod {
         UpdateRecoveryFlowWithCodeMethod {
             code: None,
             csrf_token: None,
             email: None,
-            method,
+            // method,
             transient_payload: None,
         }
     }
@@ -57,4 +58,3 @@ impl Default for MethodEnum {
         Self::Link
     }
 }
-

@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -21,13 +21,16 @@ pub struct UpdateLoginFlowWithPasswordMethod {
     #[serde(rename = "identifier")]
     pub identifier: String,
     /// Method should be set to \"password\" when logging in using the identifier and password strategy.
-    #[serde(rename = "method")]
-    pub method: String,
+    // #[serde(rename = "method")]
+    // pub method: String,
     /// The user's password.
     #[serde(rename = "password")]
     pub password: String,
     /// Identifier is the email or username of the user trying to log in. This field is deprecated!
-    #[serde(rename = "password_identifier", skip_serializing_if = "Option::is_none")]
+    #[serde(
+        rename = "password_identifier",
+        skip_serializing_if = "Option::is_none"
+    )]
     pub password_identifier: Option<String>,
     /// Transient data to pass along to any webhooks
     #[serde(rename = "transient_payload", skip_serializing_if = "Option::is_none")]
@@ -36,15 +39,18 @@ pub struct UpdateLoginFlowWithPasswordMethod {
 
 impl UpdateLoginFlowWithPasswordMethod {
     /// Update Login Flow with Password Method
-    pub fn new(identifier: String, method: String, password: String) -> UpdateLoginFlowWithPasswordMethod {
+    pub fn new(
+        identifier: String,
+        // method: String,
+        password: String,
+    ) -> UpdateLoginFlowWithPasswordMethod {
         UpdateLoginFlowWithPasswordMethod {
             csrf_token: None,
             identifier,
-            method,
+            // method,
             password,
             password_identifier: None,
             transient_payload: None,
         }
     }
 }
-

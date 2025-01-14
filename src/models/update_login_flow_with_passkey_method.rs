@@ -1,7 +1,7 @@
 /*
  * Ory Identities API
  *
- * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more. 
+ * This is the API specification for Ory Identities with features such as registration, login, recovery, account verification, profile settings, password reset, identity management, session management, email and sms delivery, and more.
  *
  * The version of the OpenAPI document: v1.2.1
  * Contact: office@ory.sh
@@ -18,8 +18,8 @@ pub struct UpdateLoginFlowWithPasskeyMethod {
     #[serde(rename = "csrf_token", skip_serializing_if = "Option::is_none")]
     pub csrf_token: Option<String>,
     /// Method should be set to \"passkey\" when logging in using the Passkey strategy.
-    #[serde(rename = "method")]
-    pub method: String,
+    // #[serde(rename = "method")]
+    // pub method: String,
     /// Login a WebAuthn Security Key  This must contain the ID of the WebAuthN connection.
     #[serde(rename = "passkey_login", skip_serializing_if = "Option::is_none")]
     pub passkey_login: Option<String>,
@@ -27,12 +27,12 @@ pub struct UpdateLoginFlowWithPasskeyMethod {
 
 impl UpdateLoginFlowWithPasskeyMethod {
     /// Update Login Flow with Passkey Method
-    pub fn new(method: String) -> UpdateLoginFlowWithPasskeyMethod {
+    pub fn new(// method: String
+    ) -> UpdateLoginFlowWithPasskeyMethod {
         UpdateLoginFlowWithPasskeyMethod {
             csrf_token: None,
-            method,
+            // method,
             passkey_login: None,
         }
     }
 }
-
